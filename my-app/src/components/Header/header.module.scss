@@ -1,0 +1,23 @@
+@import '../../assets/styles/vars';
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.headerItem {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 15px;
+    padding: 0;
+}
+
+.menuLink {
+    color: $text-color-main;
+    text-decoration: none;
+
+    &:hover {
+        text-shadow: 0.08em 0.08em 0 rgba(239, 39, 212, 0.8);
+    }
+}

@@ -1,0 +1,73 @@
+@import "../../assets/styles/vars";
+
+.container {
+    max-width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    position: relative;
+    box-sizing: border-box;
+    width: 85%;
+    border-radius: 20px;
+    min-height: 80vh;
+    padding: 20px 0;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(26.1418px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.bgText {
+    position: absolute;
+    margin: auto;
+    font-size: 40vw;
+    color: rgba(218, 171, 212, 0.1);
+
+    @media screen and (max-width: 450px) {
+        writing-mode: vertical-lr;
+        font-size: 50vw;
+    }
+}
+
+.text {
+    color: $background-color;
+    font-size: 10vw;
+    margin: 0;
+    z-index: 2;
+
+    @media screen and (max-width: 1024px) and (orientation: portrait) {
+        font-size: 10vh;
+    }
+
+    @media screen and (max-width: 330px) {
+        font-size: 7vh;
+    }
+}
+
+.textSmall {
+    color: $background-color;
+    font-size: xx-large;
+    text-align: center;
+    z-index: 2;
+}
+
+.link {
+    color: $background-color;
+    text-align: center;
+    text-decoration: none;
+    font-size: x-large;
+    font-weight: 900;
+    z-index: 2;
+    cursor: pointer;
+
+    &:hover {
+        text-shadow: 0.08em 0.08em 0 rgba(218, 171, 212, 0.5);
+    }
+}

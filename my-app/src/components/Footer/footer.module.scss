@@ -1,0 +1,33 @@
+@import '../../assets/styles/vars';
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    background: rgba(218, 171, 212, 0.1);
+    backdrop-filter: blur(26.1418px);
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.sectionTitle {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.about, .nav, .contact {
+    list-style:circle;
+    line-height: 1.5;
+    margin: 0;
+
+}
+
+.link {
+    color: $text-color-main;
+    text-decoration: none;
+
+    &:hover {
+        text-shadow: 0.08em 0.08em 0 rgba(239, 39, 212, 0.8);
+    }
+}

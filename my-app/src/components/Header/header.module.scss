@@ -21,3 +21,40 @@
         text-shadow: 0.08em 0.08em 0 $accent-color;
     }
 }
+
+.icon {
+    font-size: x-large;
+
+    &:hover {
+        color: $accent-color;
+    }
+}
+
+.input,
+.submit {
+    padding: 10px;
+    border: none;
+    outline: none;
+    background: transparent;
+    color:  $text-color-main;
+}
+
+.input {
+    &:focus {
+        width: 300px;
+    }
+}
+
+.submit {
+    cursor: pointer;
+
+    &:hover {
+        text-shadow: 0.08em 0.08em 0 $accent-color;
+    }
+}
+
+.form {
+    background-color: $background-color-secondary;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 5px ;
+}

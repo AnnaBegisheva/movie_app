@@ -8,6 +8,8 @@ export default class filmStore {
     isLoading = false;
     hasErrors = false;
     filter = {};
+    search = '';
+    isSearch = false
 
 
     constructor() {
@@ -19,6 +21,7 @@ export default class filmStore {
         if (this.isLoaded || this.isLoading) {
             return;
         }
+
         try {
             this.isLoading = true;
             const resp = await axios.get('https://kinopoiskapiunofficial.tech/api/v2.2/films', {
@@ -44,6 +47,8 @@ export default class filmStore {
             runInAction(() => {
                 this.isLoaded = true;
                 this.isLoading = false;
+                this.isSearch = false;
+                this.search = ''
             });
         }
     };

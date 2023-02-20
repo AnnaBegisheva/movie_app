@@ -31,3 +31,19 @@
         text-shadow: 0.08em 0.08em 0 $accent-color;
     }
 }
+
+.contact {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 0;
+}
+
+.icon {
+    font-size: xx-large;
+
+    &:hover {
+        color: $accent-color;
+    }
+}

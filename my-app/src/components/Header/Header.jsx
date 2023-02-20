@@ -1,8 +1,23 @@
+import { useState } from "react";
 import { inject, observer } from "mobx-react";
 import styles from './header.module.scss';
 import { Link } from "react-router-dom";
+import { VscAccount } from "react-icons/vsc";
 
 const Header = ({ dataStore }) => {
+    const [state, setState] = useState('');
+
+    const handleChange = (event) => {
+        let value = event.target.value.trim().replace(/ +/g, " ");
+        setState(value);
+    };
+
+    const handleSubmit = (event) => {
+        dataStore.search = state
+        setState('')
+        event.preventDefault();
+
+    };
 
     return (
         <div className={styles.container}>
@@ -34,20 +49,22 @@ const Header = ({ dataStore }) => {
                 </li>
             </ul>
             <div className={styles.headerItem}>
-                <input
-                    className={styles.search}
-                    type="text"
-                // onChange={props.onChange}
-                // value={props.state}
-                // data-name={props.data}
-                ></input>
+                <form onClick={handleSubmit} className={styles.form}>
+                    <label>
+                        <input type="text" value={state} onChange={handleChange} placeholder='Your request' className={styles.input} />
+                    </label>
+                    <Link to="catalog/search" className={styles.menuLink}>
+                        <input type="submit" value="Search" className={styles.submit} />
+                    </Link>
+                </form>
+
                 <div className={styles.account}>
-                    <Link to="/login" className={styles.menuLink}>
-                        Sign in
+                    <Link to="#" className={styles.menuLink}>
+                        <VscAccount className={styles.icon} />
                     </Link>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
 

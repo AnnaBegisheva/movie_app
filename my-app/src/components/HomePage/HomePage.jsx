@@ -3,21 +3,34 @@ import { inject, observer } from "mobx-react";
 import styles from './home-page.module.scss';
 import Card from "../Card/Card";
 
-const HomePage = ({ dataStore, filter }) => {
+const HomePage = ({ dataStore, filter, isSearch }) => {
     useEffect(() => {
         dataStore.loadData(filter);
     }, []);
 
     useEffect(() => {
         dataStore.isLoaded = false
-        dataStore.loadData(filter);
-    }, [filter]);
+        if (isSearch) {
+            dataStore.loadData({ 'keyword': dataStore.search })
+        } else {
+            dataStore.loadData(filter);
+        }
+    }, [filter, isSearch]);
 
     if (dataStore.hasErrors) {
         return (
             <div className={styles.error}>
                 <h2>Sorry!</h2>
                 <p>Server is unavailable</p>
+            </div>
+        );
+    }
+
+    if (dataStore.data.length === 0) {
+        return (
+            <div className={styles.error}>
+                <h2>Sorry!</h2>
+                <p>No match</p>
             </div>
         );
     }

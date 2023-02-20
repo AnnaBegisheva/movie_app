@@ -27,6 +27,7 @@ function App() {
             <Route path="/catalog/films" element={<HomePage filter={{ 'type': 'FILM' }} />} />
             <Route path="/catalog/series" element={<HomePage filter={{ 'type': 'TV_SERIES' }} />} />
             <Route path="/catalog/cartoons" element={<HomePage filter={{ 'genres': 18 }} />} />
+            <Route path="/catalog/search" element={<HomePage isSearch={true} />} />
             <Route path="/catalog/:id" element={<FilmPage />} />
           </Route>
         </Routes>

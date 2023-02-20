@@ -10,23 +10,22 @@ const FilmPage = ({ dataStore }) => {
         dataStore.setFilmData(id);
     }, []);
 
-    useEffect(() => {
-        console.log(dataStore.film.countries)
-    }, [dataStore]);
-
-
-
     return (
 
         <div className={styles.container}>
-            <h1>{dataStore.film.nameOriginal || dataStore.film.nameRu}</h1>
-            <img src={dataStore.film.posterUrl} alt='poster' />
-            <p>{dataStore.film.ratingImdb}</p>
-            <p>{dataStore.film.description}</p>
-            <p>{dataStore.film.startYear}</p>
-            <p>{dataStore.film.countriesStr}</p>
-            <p>{dataStore.film.genresStr}</p>
-            <p>{dataStore.film.filmLength}</p>
+            <h1 className={styles.title}>{dataStore.film.nameOriginal || dataStore.film.nameRu}</h1>
+            <div className={styles.imageBlock}>
+                <img src={dataStore.film.posterUrl} alt='poster' className={styles.image} />
+            </div>
+            <div className={styles.content}>
+                <p> <span className={styles.text}> Описание: </span>{dataStore.film.description ? dataStore.film.description : `n/a`}</p>
+                <p><span className={styles.text}> Жанр: </span>{dataStore.film.genresStr ? dataStore.film.genresStr : `n/a`}</p>
+                <p><span className={styles.text}> Год: </span>{dataStore.film.startYear ? dataStore.film.startYear : `n/a`}</p>
+                <p><span className={styles.text}> Страна: </span>{dataStore.film.countriesStr ? dataStore.film.countriesStr : `n/a`}</p>
+                <p><span className={styles.text}> Продолжительность: </span>{dataStore.film.filmLength ? dataStore.film.filmLength : `n/a`}</p>
+                <p><span className={styles.text}> Рейтинг IMdb: </span>{dataStore.film.ratingImdb ? dataStore.film.ratingImdb : `n/a`} </p>
+                <button className={styles.button}>Смотреть</button>
+            </div>
         </div>
 
     );

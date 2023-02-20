@@ -1,33 +1,38 @@
-
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { inject, observer } from "mobx-react";
 import styles from './home-page.module.scss';
-import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
 import Card from "../Card/Card";
 
-const HomePage = ({ dataStore }) => {
+const HomePage = ({ dataStore, filter }) => {
     useEffect(() => {
-        dataStore.loadData();
+        dataStore.loadData(filter);
     }, []);
+
+    useEffect(() => {
+        dataStore.isLoaded = false
+        dataStore.loadData(filter);
+    }, [filter]);
+
+    if (dataStore.hasErrors) {
+        return (
+            <div className={styles.error}>
+                <h2>Sorry!</h2>
+                <p>Server is unavailable</p>
+            </div>
+        );
+    }
 
     return (
         <div className={styles.container}>
-            <header>
-                <Header></Header>
-            </header>
-            <main className={styles.main}>
-                {dataStore.data.map((item) => (
-                    <Card
-                        key={item.kinopoiskId}
-                        url={item.posterUrl}
-                        id={item.kinopoiskId}
-                    ></Card>
-                ))}
-            </main>
-            <footer>
-                <Footer></Footer>
-            </footer>
+            {dataStore.data.map((item) => (
+                <Card
+                    key={item.kinopoiskId}
+                    url={item.posterUrl}
+                    id={item.kinopoiskId}
+                    name={item.nameOriginal || item.nameRu}
+                    rating={item.ratingImdb ? item.ratingImdb : `n/a`}
+                ></Card>
+            ))}
         </div>
     );
 }

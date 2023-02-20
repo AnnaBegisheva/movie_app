@@ -1,16 +1,13 @@
 .container {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    max-width: 90%;
     margin: 0 auto;
+    padding: 20px;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
-.main {
-    flex: 1 1 auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 10px;
+.error {
+    margin: 0 auto;
     padding: 20px;
+    text-align: center;
 }

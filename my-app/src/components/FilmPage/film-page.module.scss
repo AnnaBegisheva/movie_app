@@ -1,0 +1,54 @@
+@import '../../assets/styles/vars';
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(300px, 1fr);
+    justify-content: flex-start;
+    padding-bottom: 20px;
+}
+
+.title {
+    grid-column: span 2;
+}
+
+.imageBlock {
+    width: 300px;
+}
+
+.image {
+    max-width: 100%;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+}
+
+.text {
+    font-size: larger;
+    font-weight: 700;
+}
+
+.button {
+    width: 300px;
+    padding: 20px;
+    margin-top: 20px;
+    font-size: larger;
+    font-weight: 700;
+    color: $text-color-main;
+    background:  $button-color var(--p, 0) / var(--p, 0) no-repeat;
+    background-color: $background-color-secondary;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.4s, background-position 0s;
+
+    &:hover {
+        --p: 100%;
+        color: $background-color;
+      }
+}

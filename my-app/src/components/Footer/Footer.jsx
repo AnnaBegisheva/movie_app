@@ -50,7 +50,7 @@ const Footer = (props) => {
                     </li>
                     <li className={styles.navItem} onClick={props.onClick}>
                         <Link to="/films" className={styles.link}>
-                            Moovies
+                            Movies
                         </Link>
                     </li>
                     <li className={styles.navItem} onClick={props.onClick}>

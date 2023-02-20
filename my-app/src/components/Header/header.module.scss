@@ -18,6 +18,6 @@
     text-decoration: none;
 
     &:hover {
-        text-shadow: 0.08em 0.08em 0 rgba(239, 39, 212, 0.8);
+        text-shadow: 0.08em 0.08em 0 $accent-color;
     }
 }

@@ -3,7 +3,7 @@
 .container {
     display: flex;
     justify-content: space-around;
-    background: rgba(218, 171, 212, 0.1);
+    background: $background-color-secondary;
     backdrop-filter: blur(26.1418px);
     border-radius: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -28,6 +28,6 @@
     text-decoration: none;
 
     &:hover {
-        text-shadow: 0.08em 0.08em 0 rgba(239, 39, 212, 0.8);
+        text-shadow: 0.08em 0.08em 0 $accent-color;
     }
 }

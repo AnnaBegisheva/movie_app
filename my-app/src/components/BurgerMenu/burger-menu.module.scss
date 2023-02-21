@@ -1,0 +1,114 @@
+@import '../../assets/styles/vars';
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.burger_menu {
+    height: 100%;
+    width: 4em;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    cursor: pointer;
+
+    @media screen and (min-width: 769px) {
+        display: none;
+    }
+}
+
+.burger_bar {
+    width: 2em;
+    height: 0.3em;
+    background-color: $accent-color;
+    border-radius: 0.5em;
+    z-index: 2;
+
+    @media screen and (min-width: 769px) {
+        display: none;
+    }
+}
+
+.menu {
+    width: 50%;
+    height: 100vh;
+    background-color: $background-color-secondary;
+    backdrop-filter: blur(26.1418px);
+    border-bottom-right-radius: 150px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+    @media screen and (max-width: 500px) {
+        width: 100%;
+    }
+
+    @media screen and (min-width: 769px) {
+        display: none;
+    }
+}
+
+/* ------------- sliding menu ------------------ */
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: inherit;
+}
+
+/* ----- animations--------- */
+/* clicked */
+.burger_bar.clicked:nth-child(1){
+    transform: rotate(45deg) translate(0.1em, 0.3em);
+    transition: ease-out 0.5s;
+}
+
+.burger_bar.clicked:nth-child(2){
+    transform: scale(0.01);
+    transition: ease-out 0.5s;
+}
+
+.burger_bar.clicked:nth-child(3){
+    transform: rotate(135deg) translate(-0.1em, 0.4em);
+    transition: ease-out 0.5s;
+}
+
+/* unclicked */
+.burger_bar.unclicked {
+    transform: rotate(0) translate(0);
+    transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s;
+    margin-bottom: 5px;
+}
+
+.list {
+    list-style: none;
+    line-height: 2;
+    text-align: center;
+    padding-top: 3em;
+
+    @media screen and (min-width: 769px) {
+        display: none;
+    }
+}
+
+.menuLink {
+    color: $text-color-main;
+    text-decoration: none;
+    font-size: 24px;
+
+
+    &:hover {
+        text-shadow: 0.08em 0.08em 0 $accent-color;
+    }
+}
+
+.menuItem {
+    list-style: none;
+}
+
+

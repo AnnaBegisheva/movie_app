@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { inject, observer } from "mobx-react";
 import styles from './home-page.module.scss';
 import Card from "../Card/Card";
@@ -26,7 +26,7 @@ const HomePage = ({ dataStore, filter, isSearch }) => {
         );
     }
 
-    if (dataStore.data.length === 0) {
+    if (dataStore.data.length === 0 && !dataStore.isLoading) {
         return (
             <div className={styles.error}>
                 <h2>Sorry!</h2>

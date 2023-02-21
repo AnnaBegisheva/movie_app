@@ -3,6 +3,7 @@
 .container {
     display: flex;
     justify-content: space-between;
+    padding-top: 20px;
 }
 
 .headerItem {
@@ -40,17 +41,19 @@
 }
 
 .input {
-    &:focus {
-        width: 300px;
+    @media screen and (min-width: 920px) {
+        &:focus {
+            width: 300px;
+        }
     }
 }
 
 .submit {
     cursor: pointer;
 
-    &:hover {
-        text-shadow: 0.08em 0.08em 0 $accent-color;
-    }
+        &:hover {
+            text-shadow: 0.08em 0.08em 0 $accent-color;
+        }
 }
 
 .form {

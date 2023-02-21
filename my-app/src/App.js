@@ -10,6 +10,7 @@ import Layout from './components/Layout/Layout';
 import NotFound from './components/NotFound/NotFound';
 import HomePage from './components/HomePage/HomePage';
 import FilmPage from './components/FilmPage/FilmPage'
+import Login from './components/LoginPage/Login';
 
 function App() {
   const dataStore = {
@@ -21,6 +22,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="*" element={<NotFound />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/" element={<Layout />} >
             <Route index element={<HomePage />} />
             <Route path="/catalog/liked" element={<p>To be added</p>} />

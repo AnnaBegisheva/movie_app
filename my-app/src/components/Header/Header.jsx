@@ -21,33 +21,35 @@ const Header = ({ dataStore }) => {
 
     return (
         <div className={styles.container}>
-            <ul className={styles.headerItem} >
-                <li className={styles.menuItem}>
-                    <Link to="/" className={styles.menuLink} >
-                        Home
-                    </Link>
-                </li>
-                <li className={styles.menuItem}>
-                    <Link to="/catalog/liked" className={styles.menuLink}>
-                        My collection
-                    </Link>
-                </li>
-                <li className={styles.menuItem}>
-                    <Link to="/catalog/films" className={styles.menuLink}>
-                        Movies
-                    </Link>
-                </li>
-                <li className={styles.menuItem}>
-                    <Link to="/catalog/series" className={styles.menuLink}>
-                        Series
-                    </Link>
-                </li>
-                <li className={styles.menuItem}>
-                    <Link to="/catalog/cartoons" className={styles.menuLink}>
-                        Cartoons
-                    </Link>
-                </li>
-            </ul>
+            <nav>
+                <ul className={styles.headerItem} >
+                    <li className={styles.menuItem}>
+                        <Link to="/" className={styles.menuLink} >
+                            Home
+                        </Link>
+                    </li>
+                    <li className={styles.menuItem}>
+                        <Link to="/catalog/liked" className={styles.menuLink}>
+                            My collection
+                        </Link>
+                    </li>
+                    <li className={styles.menuItem}>
+                        <Link to="/catalog/films" className={styles.menuLink}>
+                            Movies
+                        </Link>
+                    </li>
+                    <li className={styles.menuItem}>
+                        <Link to="/catalog/series" className={styles.menuLink}>
+                            Series
+                        </Link>
+                    </li>
+                    <li className={styles.menuItem}>
+                        <Link to="/catalog/cartoons" className={styles.menuLink}>
+                            Cartoons
+                        </Link>
+                    </li>
+                </ul>
+            </nav>
             <div className={styles.headerItem}>
                 <form onClick={handleSubmit} className={styles.form}>
                     <label>
@@ -59,7 +61,7 @@ const Header = ({ dataStore }) => {
                 </form>
 
                 <div className={styles.account}>
-                    <Link to="#" className={styles.menuLink}>
+                    <Link to="/login" className={styles.menuLink}>
                         <VscAccount className={styles.icon} />
                     </Link>
                 </div>

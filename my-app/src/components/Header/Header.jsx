@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { inject, observer } from "mobx-react";
 import styles from './header.module.scss';
 import { Link } from "react-router-dom";
@@ -8,15 +8,6 @@ import BurgerMenu from "../BurgerMenu/BurgerMenu";
 
 const Header = ({ dataStore }) => {
     const [state, setState] = useState('');
-    // const [matches, setMatches] = useState(
-    //     window.matchMedia("(max-width: 768px)").matches
-    // )
-
-    // useEffect(() => {
-    //     window
-    //         .matchMedia("(min-width: 768px)")
-    //         .addEventListener('change', e => setMatches(e.matches));
-    // }, []);
 
     const handleChange = (event) => {
         let value = event.target.value.trim().replace(/ +/g, " ");
@@ -33,11 +24,6 @@ const Header = ({ dataStore }) => {
         <div className={styles.container}>
 
             <div className={styles.headerItem}>
-                {/* {matches && <BurgerMenu />}
-                {!matches && <NavLinks
-                    container={styles.headerItem}
-                    menuLink={styles.menuLink}
-                    menuuItem={styles.menuItem} />} */}
                 <BurgerMenu />
                 <NavLinks
                     container={`${styles.headerItem} ${styles.menu}`}

@@ -14,21 +14,11 @@ const Filter = ({ dataStore }) => {
     }, []);
 
     const handleSelectGenre = (event) => {
-        // if (event.target.value === '') {
-        //     setGenre(undefined)
-        // } else {
-        //     setGenre(+event.target.value)
-        // }
         setGenre(+event.target.value)
 
     };
 
     const handleSelectCountry = (event) => {
-        // if (event.target.value === '') {
-        //     setCountry(undefined)
-        // } else {
-        //     setCountry(+event.target.value)
-        // }
         setCountry(+event.target.value)
     };
 
@@ -39,14 +29,6 @@ const Filter = ({ dataStore }) => {
 
     const handleSelectYear = (event) => {
         setYear(event.target.value);
-        if (event.target.value === '') {
-            dataStore.minYear = undefined
-            dataStore.maxYear = undefined
-        } else if (event.target.value === "Earler") {
-            dataStore.maxYear = 2009
-        } else {
-            dataStore.minYear = +event.target.value
-        }
     };
 
     const handleSubmit = (event) => {
@@ -112,7 +94,7 @@ const Filter = ({ dataStore }) => {
                 </label>
 
                 <label>
-                    <span className={styles.selectName}>Year:</span>
+                    <span className={styles.selectName}>Year from:</span>
                     <select className={styles.select} onChange={handleSelectYear}>
                         <option value="0"></option>
                         <option value="Earler">Earler</option>

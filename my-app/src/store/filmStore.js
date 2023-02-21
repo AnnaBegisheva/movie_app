@@ -19,12 +19,6 @@ export default class filmStore {
     countries = []
     filtersIsLoaded = false;
     filtersIsLoading = false;
-    genre = undefined
-    country = undefined
-    minRating = undefined
-    maxRating = undefined
-    minYear = undefined
-    maxYear = undefined
 
     constructor() {
         makeAutoObservable(this);
@@ -32,7 +26,6 @@ export default class filmStore {
 
     // load data axios
     loadData = async (params) => {
-
         if (this.isLoaded || this.isLoading) {
             return;
         }
@@ -64,6 +57,7 @@ export default class filmStore {
                 this.filters = []
             });
         }
+
     };
 
 
@@ -135,8 +129,6 @@ export default class filmStore {
             runInAction(() => {
                 this.filtersIsLoaded = true;
                 this.filtersIsLoading = false;
-                this.isSearch = false;
-                this.search = ''
             });
         }
     };

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { inject, observer } from "mobx-react";
 import styles from './home-page.module.scss';
 import Card from "../Card/Card";
+import Filter from "../Filter/Filter";
 
 const HomePage = ({ dataStore, filter, isSearch }) => {
     useEffect(() => {
@@ -36,17 +37,20 @@ const HomePage = ({ dataStore, filter, isSearch }) => {
     }
 
     return (
-        <div className={styles.container}>
-            {dataStore.data.map((item) => (
-                <Card
-                    key={item.kinopoiskId}
-                    url={item.posterUrl}
-                    id={item.kinopoiskId}
-                    name={item.nameOriginal || item.nameRu}
-                    rating={item.ratingImdb ? item.ratingImdb : `n/a`}
-                ></Card>
-            ))}
-        </div>
+        <>
+            <Filter />
+            <div className={styles.container}>
+                {dataStore.data.map((item) => (
+                    <Card
+                        key={item.kinopoiskId}
+                        url={item.posterUrl}
+                        id={item.kinopoiskId}
+                        name={item.nameOriginal || item.nameRu}
+                        rating={item.ratingImdb ? item.ratingImdb : `n/a`}
+                    ></Card>
+                ))}
+            </div>
+        </>
     );
 }
 

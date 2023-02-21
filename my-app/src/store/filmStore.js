@@ -1,6 +1,11 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import axios from 'axios';
 
+const headers = {
+    'Content-Type': 'application/json',
+    'X-API-KEY': 'f08ed668-46da-4bf5-b331-0266276f96e5',
+}
+
 export default class filmStore {
     data = [];
     film = {};
@@ -10,7 +15,16 @@ export default class filmStore {
     filter = {};
     search = '';
     isSearch = false
-
+    genres = [];
+    countries = []
+    filtersIsLoaded = false;
+    filtersIsLoading = false;
+    genre = undefined
+    country = undefined
+    minRating = undefined
+    maxRating = undefined
+    minYear = undefined
+    maxYear = undefined
 
     constructor() {
         makeAutoObservable(this);
@@ -18,6 +32,7 @@ export default class filmStore {
 
     // load data axios
     loadData = async (params) => {
+
         if (this.isLoaded || this.isLoading) {
             return;
         }
@@ -25,10 +40,7 @@ export default class filmStore {
         try {
             this.isLoading = true;
             const resp = await axios.get('https://kinopoiskapiunofficial.tech/api/v2.2/films', {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-API-KEY': '26e7e104-125c-4248-9213-45827986f1e4',
-                },
+                headers: headers,
                 params: params,
             });
             if (resp.status === 200) {
@@ -49,6 +61,7 @@ export default class filmStore {
                 this.isLoading = false;
                 this.isSearch = false;
                 this.search = ''
+                this.filters = []
             });
         }
     };
@@ -56,24 +69,35 @@ export default class filmStore {
 
     // get film data
     setFilmData = async (id) => {
-        const resp = await axios.get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}`, {
-            headers: {
-                'Content-Type': 'application/json',
-                'X-API-KEY': '26e7e104-125c-4248-9213-45827986f1e4',
+        try {
+            const resp = await axios.get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}`, {
+                headers: headers
+            })
+            if (resp.status === 200) {
+                runInAction(() => {
+                    this.film = resp.data;
+                });
+            } else {
+                throw new Error(resp.statusText);
             }
-        })
-        this.film = resp.data;
-        let countries = []
-        this.film.countries.forEach(element => {
-            countries.push(element.country)
-        });
-        this.film.countriesStr = countries.join(", ")
+        } catch (error) {
+            runInAction(() => {
+                this.data = [];
+                this.hasErrors = true;
+            });
+        } finally {
+            let countries = []
+            this.film.countries.forEach(element => {
+                countries.push(element.country)
+            });
+            this.film.countriesStr = countries.join(", ")
 
-        let genres = []
-        this.film.genres.forEach(element => {
-            genres.push(element.genre)
-        });
-        this.film.genresStr = genres.join(", ")
+            let genres = []
+            this.film.genres.forEach(element => {
+                genres.push(element.genre)
+            });
+            this.film.genresStr = genres.join(", ")
+        }
     };
 
 
@@ -83,5 +107,37 @@ export default class filmStore {
             return
         }
         this.filter = filter;
+    };
+
+    loadFilters = async () => {
+        if (this.filtersIsLoaded || this.filtersIsLoading) {
+            return;
+        }
+
+        try {
+            this.isLoading = true;
+            const resp = await axios.get('https://kinopoiskapiunofficial.tech/api/v2.2/films/filters', {
+                headers: headers,
+            });
+            if (resp.status === 200) {
+                runInAction(() => {
+                    this.genres.push('', ...resp.data.genres)
+                    this.countries.push('', ...resp.data.countries)
+                });
+            } else {
+                throw new Error(resp.statusText);
+            }
+        } catch (error) {
+            runInAction(() => {
+                this.hasErrors = true;
+            });
+        } finally {
+            runInAction(() => {
+                this.filtersIsLoaded = true;
+                this.filtersIsLoading = false;
+                this.isSearch = false;
+                this.search = ''
+            });
+        }
     };
 }

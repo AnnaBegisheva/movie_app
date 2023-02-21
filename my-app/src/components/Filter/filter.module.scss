@@ -1,0 +1,49 @@
+@import '../../assets/styles/vars';
+
+.form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+    background: $background-color-secondary;
+    backdrop-filter: blur(26.1418px);
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+
+    @media screen and (max-width: 690px) {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+}
+
+.select {
+    outline: none;
+    cursor: pointer;
+
+    
+    @media screen and (max-width: 690px) {
+        width: 100%;
+    }
+}
+
+.selectName {
+    padding-right: 5px;
+}
+
+.submit {
+    flex: 1 1 auto;
+    color: $text-color-main;
+    background: $background-color;
+    padding-inline: 20px;
+    padding-block: 10px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+
+    &:hover {
+        text-shadow: 0.08em 0.08em 0 $accent-color;
+    }
+}

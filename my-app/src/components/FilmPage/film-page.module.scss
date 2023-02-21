@@ -25,6 +25,10 @@
 .content{
     display: flex;
     flex-direction: column;
+
+    @media screen and (max-width: 700px) {
+        grid-column: span 2;
+    }
 }
 
 .text {
@@ -51,4 +55,8 @@
         --p: 100%;
         color: $background-color;
       }
+
+      @media screen and (max-width: 360px) {
+        width: 270px;
+    }
 }
